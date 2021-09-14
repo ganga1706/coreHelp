@@ -12,17 +12,17 @@ import java.util.Scanner;
 
 public class ParserApplication {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception {
 
-		Scanner myObj = new Scanner(System.in);
+		Scanner myScannerObj = new Scanner(System.in);
 		System.out.println("please provide log file location:");
-		String filepath = myObj.nextLine();
-		File files = new File(filepath);
-		File[] filearray = files.listFiles();
-		System.out.println("Number of Log files:" + filearray.length);
+		String filepath = myScannerObj.nextLine();
+		File[] fileArray = new File(filepath).listFiles();
+		System.out.println("Number of Log files: " + fileArray.length);
 		System.out.println("please provide file Extension: ");
-		String fileExtension = myObj.nextLine();
-		for (File file : filearray) {
+		String fileExtension = myScannerObj.nextLine();
+		for (File file : fileArray) {
 			if (file.isFile() && getFileExtension(file).contains(fileExtension)) {
 				try (BufferedReader fileContent = new BufferedReader(new FileReader(file))) {
 					String line;
@@ -67,7 +67,7 @@ public class ParserApplication {
 		String[] split = line.split("\\|");
 		return split[0];
 	}
-	
+
 	public static String getFileExtension(File file) {
 		String extension = null;
 		String fileName = file.toString();
@@ -76,7 +76,6 @@ public class ParserApplication {
 			extension = fileName.substring(index + 1);
 			System.out.println("File extension is " + extension);
 		}
-
 		return extension;
 
 	}
