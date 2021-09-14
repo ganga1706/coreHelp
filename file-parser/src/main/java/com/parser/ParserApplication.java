@@ -20,8 +20,10 @@ public class ParserApplication {
 		File files = new File(filepath);
 		File[] filearray = files.listFiles();
 		System.out.println("Number of Log files:" + filearray.length);
+		System.out.println("please provide file Extension: ");
+		String fileExtension = myObj.nextLine();
 		for (File file : filearray) {
-			if (file.isFile()) {
+			if (file.isFile() && getFileExtension(file).contains(fileExtension)) {
 				try (BufferedReader fileContent = new BufferedReader(new FileReader(file))) {
 					String line;
 					List<String> listOfValue = new ArrayList<>();
@@ -64,6 +66,19 @@ public class ParserApplication {
 	public static String getFormatedName(String line) {
 		String[] split = line.split("\\|");
 		return split[0];
+	}
+	
+	public static String getFileExtension(File file) {
+		String extension = null;
+		String fileName = file.toString();
+		int index = fileName.lastIndexOf('.');
+		if (index > 0) {
+			extension = fileName.substring(index + 1);
+			System.out.println("File extension is " + extension);
+		}
+
+		return extension;
+
 	}
 
 }
