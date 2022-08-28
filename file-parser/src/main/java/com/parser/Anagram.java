@@ -7,6 +7,7 @@ public class Anagram {
         String s1 = "silent";
         String s2 = "listen";
         anagramWithJavaBuiltInFunctions(s1, s2);
+        
 
     }
 
