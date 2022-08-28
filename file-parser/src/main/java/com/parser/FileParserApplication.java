@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class ParserApplication {
+public class FileParserApplication {
 
 	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception {
